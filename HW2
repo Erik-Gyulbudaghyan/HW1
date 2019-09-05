@@ -1,0 +1,46 @@
+class Student:
+
+    def __init__(self, ID, First, Last, phone, gender, birthdate, homework, quiz, participation, project):
+        self.ID = ID
+        self.FullName = First + " " + Last
+        self.email = First + "_" + Last + "@email.com"
+        self.phone = phone
+        self.gender = gender
+        self.birthdate = birthdate
+        self.homework = homework
+        self.quiz = quiz
+        self.participation = participation
+        self.project = project
+
+
+    def getpersonalinfo(self):
+        print(self.ID)
+        print(self.FullName)
+        print(self.email)
+        print(self.phone)
+        print(self.gender)
+        print(self.birthdate)
+        print("___________________")
+
+    def getcurrentgrade(self):
+        self.homework = int(self.homework * 0.15)
+        self.quiz = int(self.quiz * 0.25)
+        self.participation = int(self.participation * 0.25)
+        self.project = int(self.project * 0.35)
+        currentgrade = self.homework + self.quiz + self.participation + self.project
+        print("Final grade: ", + currentgrade)
+
+
+
+def main():
+    st1 = Student("AUA 123", "Erik", "Gyulbudaghyan", 123456, "Male", "01/01/1999", 80, 80, 100, 90)
+    st2 = Student("AUA 124", "Grig", "Tukharyan", 123457, "Male", "02/02/1999", 85, 85, 90, 90)
+
+    st1.getpersonalinfo()
+    st1.getcurrentgrade()
+
+    st2.getpersonalinfo()
+    st2.getcurrentgrade()
+
+
+main()
