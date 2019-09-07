@@ -1,3 +1,4 @@
+#incorrect implementation
 def sum():
     n = int(input("Insert area of "))
     a = []
