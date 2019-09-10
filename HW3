@@ -1,0 +1,49 @@
+class Classroom:
+
+
+    def __init__(self, capacity, roomnumber):
+        self.capacity = capacity
+        self.roomnumber = roomnumber
+        self.schedule = []
+
+    def getClassroominfo(self):
+        print("Capacity: ", self.capacity)
+        print("Room Number: ", self.roomnumber)
+
+    def isValidinfo(self, start, end):
+        for key in self.schedule:
+            if not(start < key["start"] and end < key["start"] or start > key["end"] and end > key["end"]):
+                return False
+        return True
+
+    def getReserveinfo(self, start, end):
+        if(self.isValidinfo(start,end)):
+            timearea ={"start":start, "end":end}
+            self.schedule.append(timearea)
+            return True
+        else:
+            return False
+
+
+def main():
+    R1 = Classroom(40, 208)
+    reserve = "x"
+    while reserve != "No":
+        reserve = input("Would you like to add to schedule (Yes/No): ")
+        if reserve == "Yes":
+            start = int(input("Please insert your start time: "))
+            end = int(input("Please insert your end time: "))
+
+            while not (R1.getReserveinfo(start, end)):
+                print("Unfortunately, there is other reservation in that time. Please choose another one:")
+                start = int(input("Please insert your start time: "))
+                end = int(input("Please insert your end time: "))
+        elif reserve == "no":
+            print("Thank you. This is your current reservations: ")
+        else:
+            print("Invalid input, please try again")
+
+    print(R1.schedule)
+
+
+main()
