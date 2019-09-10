@@ -31,13 +31,21 @@ def main():
     while reserve != "No":
         reserve = input("Would you like to add to schedule (Yes/No): ")
         if reserve == "Yes":
-            start = int(input("Please insert your start time: "))
-            end = int(input("Please insert your end time: "))
+            startHour = int(input("Please insert your start time Hour: "))
+            startMinute = int(input("Please insert your start time Minute: "))
+            start = startHour, ':', startMinute
+            endHour = int(input("Please insert your end time Hour: "))
+            endMinute = int(input("Please insert your end time Minute: "))
+            end = endHour, ':', endMinute
 
             while not (R1.getReserveinfo(start, end)):
                 print("Unfortunately, there is other reservation in that time. Please choose another one:")
-                start = int(input("Please insert your start time: "))
-                end = int(input("Please insert your end time: "))
+                startHour = int(input("Please insert your start time Hour: "))
+                startMinute = int(input("Please insert your start time Minute: "))
+                start = startHour, ':', startMinute
+                endHour = int(input("Please insert your end time Hour: "))
+                endMinute = int(input("Please insert your end time Minute: "))
+                end = endHour, ':', endMinute
         elif reserve == "no":
             print("Thank you. This is your current reservations: ")
         else:
