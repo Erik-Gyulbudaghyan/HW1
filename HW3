@@ -53,5 +53,7 @@ def main():
 
     print(R1.schedule)
 
+    print(R1.getClassroominfo())
+
 
 main()
