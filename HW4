@@ -1,0 +1,80 @@
+class Classroom:
+
+    def __init__(self, capacity, roomnumber):
+        self.capacity = capacity
+        self.roomnumber = roomnumber
+        self.schedule = []
+        self.ClassroomID = []
+
+    def getClassroominfo(self):
+        print("Capacity: ", self.capacity)
+        print("Room Number: ", self.roomnumber)
+
+    def isValidinfo(self, start, end):
+        for key in self.schedule:
+            if not(start < key["start"] and end < key["start"] or start > key["end"] and end > key["end"]):
+                return False
+        return True
+
+    def getReserveinfo(self, start, end):
+        if(self.isValidinfo(start,end)):
+            timearea ={"start":start, "end":end}
+            self.schedule.append(timearea)
+            return True
+        else:
+            return False
+
+    def getClassRoom(Room):
+        return str.join(",", Room.ClassroomID)
+
+
+def main():
+    R1 = Classroom(40, 208)
+    R2 = Classroom(35, 414)
+    R3 = Classroom(50, 114)
+    
+    while True:
+        ReservedID = input("Please choose classroom to reserve ("+Classroom.getClassRoom()+"): ")
+        if ReservedID == R1.roomnumber:
+            reservedClass = R1
+            break
+        elif ReservedID == R2.roomnumber:
+            reservedClass = R2
+            break
+        elif ReservedID == R3.roomnumber:
+            reservedClass = R3
+            break
+        else:
+            print("Unfortunately this class is reserved please try again: ")
+            
+    reserve = "x"
+    while reserve != "No":
+        reserve = input("Would you like to add to schedule (Yes/No): ")
+        if reserve == "Yes":
+            startHour = int(input("Please insert your start time Hour: "))
+            startMinute = int(input("Please insert your start time Minute: "))
+            start = startHour, ':', startMinute
+            endHour = int(input("Please insert your end time Hour: "))
+            endMinute = int(input("Please insert your end time Minute: "))
+            end = endHour, ':', endMinute
+
+            while not (R1.getReserveinfo(start, end)):
+                print("Unfortunately, there is other reservation in that time. Please choose another one:")
+                startHour = int(input("Please insert your start time Hour: "))
+                startMinute = int(input("Please insert your start time Minute: "))
+                start = startHour, ':', startMinute
+                endHour = int(input("Please insert your end time Hour: "))
+                endMinute = int(input("Please insert your end time Minute: "))
+                end = endHour, ':', endMinute
+                
+            print("Reserved from", start, "to", end)
+        elif reserve == "No":
+            print("Thank you for using openroom.am, here is your schedule for", reservedClass.roomnumber, ":")
+        else:
+            print("Invalid input, please try again")
+
+    print(reservedClass.schedule)
+
+
+main()
+
