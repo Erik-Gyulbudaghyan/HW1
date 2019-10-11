@@ -1,0 +1,20 @@
+def newSelectionSort():
+    n = int(input("Please input here your Array: "))
+    a = []
+    count = 0
+    for _ in range(n):
+        count = count + 1
+        x = int(input("Input numbers: "))
+        a.append(x)
+    print("Your Array is: " ,a)
+    for k in range(n):
+        min_k = k
+        for g in range(k+1, n):
+            if a[min_k]>a[g]:
+                min_k=g
+        a[k],a[min_k]=a[min_k],a[k]
+    print("Final Array:",a)
+
+
+
+newSelectionSort()
