@@ -1,0 +1,42 @@
+class Student:
+
+    def __init__(self, Name, Surname, ID, email):
+        self.Name = Name
+        self.Surname = Surname
+        self.ID = ID
+        self.email = email
+        self.FinalGrade = []
+
+    class Courses:
+        def __init__(self, CName,AsLists):
+            self.Courses = CName
+            self.Assignment = AsLists
+
+        def getCourses(self, CName):
+            newCourses = CName
+            while newCourses == 5:
+                break
+            elif:
+            newCourses = input()
+            CName.append(newCourses)
+
+
+
+
+    class Assignment:
+        def __init__(self, ASName, Grades):
+
+
+
+
+
+
+def main():
+    St1 = Student("Erik", "Gyulbudaghyan", 123456789, "erik_gyulbudaghyan@edu.aua.am")
+
+    St1.addCourse()
+
+
+
+
+main()
