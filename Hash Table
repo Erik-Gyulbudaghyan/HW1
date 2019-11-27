@@ -1,0 +1,61 @@
+import json
+Table_Capacity = 3
+
+class Node:
+    def __init__(self, key, value):
+        self.key=key
+        self.value=value
+        self.next = None
+
+class HashTable:
+    def __init__(self):
+        self.capacity = Table_Capacity
+        self.size= 0
+        self.scoop = [None]*self.capacity
+
+    def loadData(self):
+        with open("HashTable.json") as data_file:
+            self.data = json.load(data_file)
+        return self.data
+
+    def hash(self,key):
+        HashCalc = 0
+        for idx, c in enumerate(key):
+            HashCalc += (idx+len(key))**ord(c)
+            HashCalc = HashCalc % self.capacity
+            
+            
+        return HashCalc
+
+    def insert(self,key,value):
+        self.size += 1
+        index = self.hash(key)
+        Node = self.scoop[index]
+        if Node is None:
+            self.scoop[index]=Node(key, value)
+            return
+        prev = Node
+        while Node is not None:
+            prev = Node
+            Node= Node.next
+        prev.next = Node(key,value)
+
+    def find(self,key):
+        index = self.hash(key)
+        Node = self.scoop[index]
+        while Node is not None and Node.key != key:
+            Node = Node.next
+        if Node is None:
+            return None
+        else:
+            return Node.value
+
+def main():
+    users = HashTable()
+    all_users = users.loadData()
+    for key in all_users["ID"]:
+        username = key
+        fname = all_users["ID"][key]["name"]
+        users.insert(username,fname)
+        print(users.find(username))
+main()
