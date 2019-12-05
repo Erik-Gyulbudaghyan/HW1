@@ -1,0 +1,46 @@
+class Task:
+
+    def __init__(self, Name, Deadline, level):
+        self.name = Name
+        self.deadline = Deadline
+        self.level = Level
+
+
+class TaskManager:
+
+    def __init__(self):
+        self.Tasks = []
+
+    def addTask(self, Task):
+        self.Tasks.append(Task)
+
+    def printAllTasks(self):
+        for Task in self.Tasks:
+            print(Task.Name, Task.Deadline)
+
+    def printTheMostImportantTasks(self):
+        max = 0
+        for task in self.tasks:
+            if Task.level > max:
+                max = Task.level
+                Name = Task.Name
+                Deadline = Task.Deadline
+        print(Name, Deadline)
+
+
+def main():
+    auaTasks = TaskManager()
+    personalTasks = TaskManager()
+    task = Task("Calculus HW", "08/10/19", 8)
+    auaTasks.addTask(task)
+    task = Task("Preparing for Midterm", "26/10/19", 5)
+    auaTasks.addTask(task)
+    task = Task("Class Project", "28/10/19", 3)
+    personalTasks.addTask(task)
+    task = Task("Friend's Birthday Gift", "22/10/19", 10)
+    personalTasks.addTask(task)
+    auaTasks.printAllTasks()
+    personalTasks.printTheMostImportantTasks()
+
+
+main()
